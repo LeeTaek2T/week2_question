@@ -9,24 +9,23 @@ class PriorityQueue:
 
   def pop(self):
     if len(self.heap) > 1:
-      top_element=self.heap[0]
-      self.heap[0]=self.heap.pop()
+      top_element = self.heap[0]
+      self.heap[0] = self.heap.pop()
       self._sift_down(0)
       return top_element[1]
     elif len(self.heap) == 1:
-      entry = self.heap.pop()
-      return entry[1]
+      return self.heap.pop()[1]
     else:
       return None
 
   def _sift_up(self, index):
     while index > 0:
       parent_index = (index - 1) // 2
-      if self.heap[parent_index][0] > self.heap[index][0]:
-        self._swap(parent_index, index)
-        index = parent_index
-      else:
-        break
+        if self.heap[parent_index][0] > self.heap[index][0]:
+          self._swap(parent_index, index)
+          index = parent_index
+        else:
+          break
 
   def _sift_down(self, index):
     while True:
@@ -35,16 +34,16 @@ class PriorityQueue:
       smallest = index
 
       if left_child_index < len(self.heap) and \
-        self.heap[left_child_index][0] > self.heap[smallest][0]:
-        smallest = left_child_index
+              self.heap[left_child_index][0] < self.heap[smallest][0]:
+          smallest = left_child_index
 
       if right_child_index < len(self.heap) and \
-        self.heap[right_child_index][0] > self.heap[smallest][0]:
-        smallest = right_child_index
+              self.heap[right_child_index][0] < self.heap[smallest][0]:
+          smallest = right_child_index
 
       if smallest != index:
-        self._swap(index, smallest)
-        index = smallest
+          self._swap(index, smallest)
+          index = smallest
       else:
         break
 
