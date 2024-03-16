@@ -9,7 +9,6 @@ class PriorityQueue:
 
   def pop(self):
     if len(self.heap) > 1:
-      self._swap(0, len(self.heap) - 1)
       entry = self.heap.pop()
       self._sift_down(0)
       return entry[1]
