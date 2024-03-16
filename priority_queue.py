@@ -15,10 +15,9 @@ class PriorityQueue:
       return entry[1]
     elif len(self.heap) == 1:
       entry = self.heap.pop()
-      return entry[i] 
+      return entry[1]
     else:
       return None
-
   def _sift_up(self, index):
     while index > 0:
       parent_index = (index - 1) // 2
