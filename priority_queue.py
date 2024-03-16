@@ -8,16 +8,16 @@ class PriorityQueue:
     self._sift_up(len(self.heap) - 1)
 
   def pop(self):
-    if self.heap:
-      if len(self.heap) > 1:
-        top_element = self.heap[0]
-        self.heap[0] = self.heap.pop()
-        self._sift_down(0)
-        return top_element[1]
-      else:
-        return self.heap.pop()[1]
+    if len(self.heap) > 1:
+      entry = self.heap.pop()
+      self._sift_down(0)
+      return entry[1]
+    elif len(self.heap) == 1:
+      entry = self.heap.pop()
+      return entry[1]
     else:
       return None
+
   def _sift_up(self, index):
     while index > 0:
       parent_index = (index - 1) // 2
