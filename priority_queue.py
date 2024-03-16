@@ -2,20 +2,20 @@ class PriorityQueue:
   def __init__(self):
     self.heap = []
 
-  def push(self, item):
-    entry = item
+  def push(self, item, priority):
+    entry = (priority, item)
     self.heap.append(entry)
     self._sift_up(len(self.heap) - 1)
 
   def pop(self):
     if len(self.heap) > 1:
       self._swap(0, len(self.heap) - 1)
-      item = self.heap.pop()
+      entry = self.heap.pop()
       self._sift_down(0)
-      return item
+      return entry[1]
     elif len(self.heap) == 1:
-      item = self.heap.pop()
-      return item
+      entry = self.heap.pop()
+      return entry[i] 
     else:
       return None
 
